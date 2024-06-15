@@ -1,0 +1,126 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
+using UnityEngine;
+
+
+public abstract class Tower : MonoBehaviour
+{
+    protected string m_TowerName;
+    protected float m_CoolTime;
+    protected int m_Cost;
+    protected float m_AttackRange;
+    protected float m_TowerArea;
+    protected bool m_IsDead;
+    protected int m_BulletSpeed;
+    protected GameObject m_BulletPrefab;
+    protected CircleCollider2D m_TowerCollider;
+    protected GameObject m_Enemy;
+    public bool IsFire;
+
+
+    //protected DamageCaster m_Caster;
+
+
+    [SerializeField] private LayerMask _enemyLayer;
+
+    [SerializeField] private LayerMask _UnitLineLayer;
+
+    public Action OnMouseDown1Event;
+    public Action OnMouseDown2Event;
+
+    [SerializeField] private TowerData _weaponSO;
+
+    public List<GameObject> enemyTargetList = new List<GameObject>();
+    [SerializeField] private float radius = 0.5f;
+
+
+    public bool isUnitCheck;
+
+    public virtual void Awake()
+    {
+        m_BulletSpeed = _weaponSO.bulletSpeed;
+        m_CoolTime = _weaponSO.coolTime;
+        m_Cost = _weaponSO.cost;
+        m_AttackRange = _weaponSO.attackRange;
+        m_TowerArea = _weaponSO.towerArea;
+        m_TowerName = _weaponSO.towerName;
+        m_BulletPrefab = _weaponSO.bulletPrefab;
+        m_TowerCollider = _weaponSO.towerCollider;
+    }
+
+    public virtual void Start()
+    {
+        Physics2D.queriesHitTriggers = true;
+        m_TowerCollider.radius = m_AttackRange;
+    }
+
+    private void Update()
+    {
+        UnitCollisionCheck();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+            float distance = (mousePos - transform.position).magnitude;
+
+            if (distance <= radius)
+            {
+                OnMouseDown1Event?.Invoke();
+            }
+            else if (distance > radius)
+            {
+                OnMouseDown2Event?.Invoke();
+            }
+        }
+    }
+    public virtual void Fire(Vector2 vector)
+    {
+        GameObject bullet = Instantiate(m_BulletPrefab);
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<Bullet>().Fire(vector, m_BulletSpeed);
+    }
+
+    private void UnitCollisionCheck()
+    {
+        Collider2D collider = Physics2D.OverlapBox(transform.position, new Vector2(1, 1), 0, _UnitLineLayer);
+        if (collider && collider.gameObject != gameObject)
+        {
+            isUnitCheck = true;
+        }
+        else
+        {
+            isUnitCheck = false;
+        }
+        
+    }
+
+
+    public IEnumerator Fire()
+    {
+        IsFire = true;
+        while (!m_IsDead)
+        {
+            if (enemyTargetList.Count > 0)
+            {
+                if (enemyTargetList[0].gameObject.IsDestroyed())
+                {
+                    enemyTargetList.Remove(enemyTargetList[0].gameObject);
+                }
+                Fire(enemyTargetList[0].transform.position);
+            }
+            yield return new WaitForSeconds(m_CoolTime);
+        }
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, new Vector2(1,1));
+    }
+
+#endif
+}

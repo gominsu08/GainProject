@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f46a30fbb845f478fd94a858fc21a1, type: 3}
+  m_Name: BoomSO
+  m_EditorClassIdentifier: 
+  towerName: 
+  coolTime: 1
+  cost: 2
+  attackRange: 5
+  towerArea: 2
+  bulletSpeed: 2
+  bulletPrefab: {fileID: 4129967105772207039, guid: a0264602aa0bcb9498e9f3ebfde606d2, type: 3}
+  towerCollider: {fileID: 8219064609794577260, guid: bd05d5fb8aa00944b97eaba458058836, type: 3}
