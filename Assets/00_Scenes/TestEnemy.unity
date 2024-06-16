@@ -180,6 +180,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13aa9cb0d1acf154f9735ce46f32f9fe, type: 3}
+--- !u!1 &63862503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63862504}
+  - component: {fileID: 63862505}
+  m_Layer: 0
+  m_Name: CrossBowBuy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63862504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63862503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 990413760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &63862505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63862503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203424c9426f18c4f9ebd71339aad43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBuyPrefab: {fileID: 884008436903138432, guid: 78ce4fd5ef3050f4fb6e07252fb63338, type: 3}
 --- !u!1 &94274347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,7 +5946,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 991
+    m_Bits: 2015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -6113,8 +6158,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 990413761}
-        m_TargetAssemblyTypeName: CrossBowBuy, Assembly-CSharp
+      - m_Target: {fileID: 63862505}
+        m_TargetAssemblyTypeName: UnitBuy, Assembly-CSharp
         m_MethodName: CreatUnit
         m_Mode: 1
         m_Arguments:
@@ -7116,7 +7161,7 @@ GameObject:
   - component: {fileID: 533182634}
   - component: {fileID: 533182633}
   m_Layer: 5
-  m_Name: CrossBow (3)
+  m_Name: GatlingGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7185,7 +7230,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 533182634}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1576004153}
+        m_TargetAssemblyTypeName: UnitBuy, Assembly-CSharp
+        m_MethodName: CreatUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &533182634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8837,7 +8894,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990413760}
-  - component: {fileID: 990413761}
   m_Layer: 0
   m_Name: UnitBuyBar1
   m_TagString: Untagged
@@ -8857,22 +8913,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 63862504}
+  - {fileID: 1652853691}
+  - {fileID: 1576004152}
   m_Father: {fileID: 1667945217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &990413761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990413759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 203424c9426f18c4f9ebd71339aad43e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitBuyPrefab: {fileID: 884008436903138432, guid: 78ce4fd5ef3050f4fb6e07252fb63338, type: 3}
 --- !u!1 &1016023401
 GameObject:
   m_ObjectHideFlags: 0
@@ -9025,7 +9071,7 @@ GameObject:
   - component: {fileID: 1023111302}
   - component: {fileID: 1023111301}
   m_Layer: 5
-  m_Name: CrossBow (2)
+  m_Name: Boom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9094,7 +9140,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1023111302}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1652853692}
+        m_TargetAssemblyTypeName: UnitBuy, Assembly-CSharp
+        m_MethodName: CreatUnit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1023111302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9900,6 +9958,51 @@ MonoBehaviour:
   _heartPanel: {fileID: 94274347}
   _playerHp: 10
   playerDead: 0
+--- !u!1 &1576004151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576004152}
+  - component: {fileID: 1576004153}
+  m_Layer: 0
+  m_Name: GatlingGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576004152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576004151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 990413760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576004153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576004151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203424c9426f18c4f9ebd71339aad43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBuyPrefab: {fileID: 5872403986208981795, guid: 8424ee0da6ed1b64f82bdbd5a7509d1d, type: 3}
 --- !u!1 &1584999218
 GameObject:
   m_ObjectHideFlags: 0
@@ -10217,6 +10320,51 @@ Transform:
   - {fileID: 895071177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1652853690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652853691}
+  - component: {fileID: 1652853692}
+  m_Layer: 0
+  m_Name: BoomBuy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1652853691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652853690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 990413760}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1652853692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652853690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203424c9426f18c4f9ebd71339aad43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBuyPrefab: {fileID: 4345548444198250383, guid: be18b114591ffd642a21d41d9328ad56, type: 3}
 --- !u!1 &1667945216
 GameObject:
   m_ObjectHideFlags: 0

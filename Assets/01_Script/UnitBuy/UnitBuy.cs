@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CrossBowBuy : MonoBehaviour
+public class UnitBuy : MonoBehaviour
 {
     [SerializeField] private Tower _unitBuyPrefab;
 
@@ -30,7 +30,7 @@ public class CrossBowBuy : MonoBehaviour
             print((_unit.GetComponent<Tower>().isUnitCheck) + " == 현재 상태");
             if (!_unit.GetComponent<Tower>().isUnitCheck)
             {
-                _unit.layer = 8;
+                _unit.layer = 10;
                 StopAllCoroutines();
                 print("설치됨");
                 SetManager();
@@ -56,6 +56,4 @@ public class CrossBowBuy : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
     }
-
-
 }

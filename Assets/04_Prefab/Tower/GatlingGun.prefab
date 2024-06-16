@@ -178,7 +178,7 @@ MonoBehaviour:
     m_Bits: 256
   _UnitLineLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   _weaponSO: {fileID: 11400000, guid: 585f0a564cb3e75478642a6101051ea3, type: 2}
   enemyTargetList: []
   radius: 0.5
