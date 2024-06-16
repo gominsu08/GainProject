@@ -20,6 +20,9 @@ public abstract class Tower : MonoBehaviour
     protected GameObject m_Enemy;
     public bool IsFire;
 
+    protected int m_BulletCount;
+    protected bool m_IsFireCheck;
+
 
     //protected DamageCaster m_Caster;
 
@@ -86,8 +89,8 @@ public abstract class Tower : MonoBehaviour
 
     private void UnitCollisionCheck()
     {
-        Collider2D collider = Physics2D.OverlapBox(transform.position, new Vector2(1, 1), 0, _UnitLineLayer);
-        if (collider && collider.gameObject != gameObject)
+        
+        if (Physics2D.OverlapBox(transform.position, new Vector2(1, 1), 0, _UnitLineLayer))
         {
             isUnitCheck = true;
         }
@@ -95,7 +98,6 @@ public abstract class Tower : MonoBehaviour
         {
             isUnitCheck = false;
         }
-        
     }
 
 
@@ -110,8 +112,10 @@ public abstract class Tower : MonoBehaviour
                 {
                     enemyTargetList.Remove(enemyTargetList[0].gameObject);
                 }
+                if(!m_IsFireCheck)
                 Fire(enemyTargetList[0].transform.position);
             }
+            m_BulletCount++;
             yield return new WaitForSeconds(m_CoolTime);
         }
     }

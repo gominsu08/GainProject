@@ -99,13 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsFire: 0
-  isUnitCheck: 0
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _UnitLineLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _weaponSO: {fileID: 11400000, guid: 2387389bdab92164192bb25a2da28cc9, type: 2}
   enemyTargetList: []
   radius: 0.5
+  isUnitCheck: 0
 --- !u!1001 &982857740499221863
 PrefabInstance:
   m_ObjectHideFlags: 0

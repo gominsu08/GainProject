@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3560560002486369241}
   - component: {fileID: 3819753922912803063}
   m_Layer: 0
-  m_Name: CrossbowBullet
+  m_Name: DefaultBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

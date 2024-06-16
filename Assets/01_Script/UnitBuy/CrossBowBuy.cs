@@ -8,6 +8,7 @@ public class CrossBowBuy : MonoBehaviour
 {
     [SerializeField] private Tower _unitBuyPrefab;
 
+
     private GameObject _unit;
     private bool _isUnitSet1, _isUnitSet2;
     public void CreatUnit()
@@ -29,6 +30,7 @@ public class CrossBowBuy : MonoBehaviour
             print((_unit.GetComponent<Tower>().isUnitCheck) + " == 현재 상태");
             if (!_unit.GetComponent<Tower>().isUnitCheck)
             {
+                _unit.layer = 8;
                 StopAllCoroutines();
                 print("설치됨");
                 SetManager();
