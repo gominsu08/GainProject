@@ -5,6 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum EnemyDir
+{
+    up,
+    down, 
+    left, 
+    right
+}
 public class Enemy : MonoBehaviour
 {
     public Action<int> OnEnemyAttack;
@@ -17,6 +24,8 @@ public class Enemy : MonoBehaviour
     protected float m_gold;
     protected int m_cost;
 
+    private EnemyDir _enemyDir;
+
     private void Awake()
     {
         m_Damage = _enemyData.damage;
@@ -24,6 +33,12 @@ public class Enemy : MonoBehaviour
         m_Speed = _enemyData.moveSpeed;
         m_gold = _enemyData.gold;
         m_cost = _enemyData.cost;
+    }
+
+    private void Start()
+    {
+        _enemyDir = EnemyDir.right;
+        m_dir = Vector3.right;
     }
 
 
@@ -41,34 +56,6 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Home"))
-        {
-            OnEnemyAttack?.Invoke(m_Damage);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Right"))
-        {
-            m_dir = Vector3.right;
-        }
-
-        if (collision.gameObject.CompareTag("Up"))
-        {
-            m_dir = Vector3.up;
-        }
-
-        if (collision.gameObject.CompareTag("Down"))
-        {
-            m_dir = Vector3.down;
-        }
-
-        if (collision.gameObject.CompareTag("Left"))
-        {
-            m_dir = Vector3.left;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -82,5 +69,94 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         transform.position += m_dir * m_Speed * Time.deltaTime;
+        ColliderCheck();
     }
+
+    private void ColliderCheck()
+    {
+        if (_enemyDir == EnemyDir.up)
+        {
+            if (ColliderCheckUp())
+            {
+                if (!ColliderCheckLeft())
+                {
+                    m_dir = Vector3.left;
+                    _enemyDir = EnemyDir.left;
+                }
+                if (!ColliderCheckRight())
+                {
+                    m_dir = Vector3.right;
+                    _enemyDir = EnemyDir.right;
+                }
+            }
+        }
+
+        if (_enemyDir == EnemyDir.down)
+        {
+            if (ColliderCheckDown())
+            {
+                if (!ColliderCheckLeft())
+                {
+                    m_dir = Vector3.left;
+                    _enemyDir = EnemyDir.left;
+                }
+                if (!ColliderCheckRight())
+                {
+                    m_dir = Vector3.right;
+                    _enemyDir = EnemyDir.right;
+                }
+            }
+        }
+
+        if (_enemyDir == EnemyDir.left)
+        {
+            if (ColliderCheckLeft())
+            {
+                if (!ColliderCheckUp())
+                {
+                    m_dir = Vector3.up;
+                    _enemyDir = EnemyDir.up;
+                }
+                if (!ColliderCheckDown())
+                {
+                    m_dir = Vector3.down;
+                    _enemyDir = EnemyDir.down;
+                }
+            }
+        }
+
+        if (_enemyDir == EnemyDir.right)
+        {
+            if (ColliderCheckRight())
+            {
+                if (!ColliderCheckUp())
+                {
+                    m_dir = Vector3.up;
+                    _enemyDir = EnemyDir.up;
+                }
+                if (!ColliderCheckDown())
+                {
+                    m_dir = Vector3.down;
+                    _enemyDir = EnemyDir.down;
+                }
+            }
+        }
+    }
+
+    private bool ColliderCheckUp()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.up, 0.5f, LayerMask.GetMask("Line"));
+    }
+    private bool ColliderCheckLeft()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.left, 0.5f, LayerMask.GetMask("Line"));
+    }
+    private bool ColliderCheckRight()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.right, 0.5f, LayerMask.GetMask("Line"));
+    }
+    private bool ColliderCheckDown()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Line"));
+    } 
 }
