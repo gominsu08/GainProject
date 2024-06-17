@@ -18,9 +18,9 @@ public class EnemyData : ScriptableObject
     /// <summary>
     /// Enemy를 잡았을때 얻을수 있는 최대 점수 cost는 Enemy가 생성되고 나서부터 점차 줄어든다
     /// </summary>
-    public float cost;
+    public float gold;
     /// <summary>
     /// Enemy를 잡았을때 얻을 수 있는 골드(재화)
     /// </summary>
-    public int gold;
+    public int cost;
 }

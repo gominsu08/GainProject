@@ -13,6 +13,14 @@ public class UnitBuy : MonoBehaviour
     private bool _isUnitSet1, _isUnitSet2;
     public void CreatUnit()
     {
+        if (CostManager.Instance.CurrentCost - _unitBuyPrefab._weaponSO.cost >= 0)
+        {
+            CostManager.Instance.CurrentCost -= _unitBuyPrefab._weaponSO.cost;
+        }
+        else
+        {
+            return;
+        }
         _unit = Instantiate(_unitBuyPrefab.gameObject);
         StartCoroutine(UnitLocationSet());
     }
@@ -36,7 +44,7 @@ public class UnitBuy : MonoBehaviour
                 SetManager();
             }
         }
-        
+
     }
 
 

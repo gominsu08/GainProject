@@ -14,12 +14,16 @@ public class Enemy : MonoBehaviour
     protected int m_EnemyHP = 10;
     protected int m_Damage = 1;
     protected float m_Speed = 3;
+    protected float m_gold;
+    protected int m_cost;
 
     private void Awake()
     {
         m_Damage = _enemyData.damage;
         m_EnemyHP = _enemyData.hp;
         m_Speed = _enemyData.moveSpeed;
+        m_gold = _enemyData.gold;
+        m_cost = _enemyData.cost;
     }
 
 
@@ -29,6 +33,7 @@ public class Enemy : MonoBehaviour
             m_EnemyHP = value;
             if (m_EnemyHP <= 0)
             {
+                CostManager.Instance.CurrentCost += m_cost;
                 Destroy(gameObject);
             }
         }

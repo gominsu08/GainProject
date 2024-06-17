@@ -10,15 +10,15 @@ public abstract class Tower : MonoBehaviour
 {
     protected string m_TowerName;
     protected float m_CoolTime;
-    protected int m_Cost;
+    public int cost;
     protected float m_AttackRange;
-    protected float m_TowerArea;
     protected bool m_IsDead;
     protected int m_BulletSpeed;
     protected GameObject m_BulletPrefab;
     protected CircleCollider2D m_TowerCollider;
     protected GameObject m_Enemy;
     public bool IsFire;
+    protected Vector2 m_Size;
 
     protected int m_BulletCount;
     protected bool m_IsFireCheck;
@@ -34,7 +34,7 @@ public abstract class Tower : MonoBehaviour
     public Action OnMouseDown1Event;
     public Action OnMouseDown2Event;
 
-    [SerializeField] private TowerData _weaponSO;
+    [field: SerializeField] public TowerData _weaponSO { get; private set; }
 
     public List<GameObject> enemyTargetList = new List<GameObject>();
     [SerializeField] private float radius = 0.5f;
@@ -46,12 +46,12 @@ public abstract class Tower : MonoBehaviour
     {
         m_BulletSpeed = _weaponSO.bulletSpeed;
         m_CoolTime = _weaponSO.coolTime;
-        m_Cost = _weaponSO.cost;
+        cost = _weaponSO.cost;
         m_AttackRange = _weaponSO.attackRange;
-        m_TowerArea = _weaponSO.towerArea;
         m_TowerName = _weaponSO.towerName;
         m_BulletPrefab = _weaponSO.bulletPrefab;
         m_TowerCollider = _weaponSO.towerCollider;
+        m_Size = _weaponSO.size;
     }
 
     public virtual void Start()
@@ -90,7 +90,7 @@ public abstract class Tower : MonoBehaviour
     private void UnitCollisionCheck()
     {
         
-        if (Physics2D.OverlapBox(transform.position, new Vector2(1, 1), 0, _UnitLineLayer))
+        if (Physics2D.OverlapBox(transform.position, m_Size, 0, _UnitLineLayer))
         {
             isUnitCheck = true;
         }
@@ -123,7 +123,8 @@ public abstract class Tower : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, new Vector2(1,1));
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(transform.position, m_Size);
     }
 
 #endif

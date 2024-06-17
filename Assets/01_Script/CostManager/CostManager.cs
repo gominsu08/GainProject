@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class CostManager : MonoBehaviour
+using Unity.VisualScripting;
+public class CostManager : MonoSingleton<CostManager>
 {
-    private CostManager _instance;
-
     [SerializeField] private int _startCost;
 
     private int _currentCost;
@@ -31,22 +30,13 @@ public class CostManager : MonoBehaviour
 
     [SerializeField] private TMP_Text _currentCostText;
 
-    public CostManager Instance
+    private void Awake()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new CostManager();
-            }
-
-            return _instance;
-        }
+        CurrentCost = _startCost;
     }
 
-
-    private void Start()
+    private void Update()
     {
-        _currentCostText.text = $"Current Cost : {_startCost}";
+        _currentCostText.text = $"Current Cost : {CurrentCost}";
     }
 }

@@ -11,8 +11,8 @@ public class TowerData : ScriptableObject
     [Header("Tower State")]
     public float coolTime;
     public int cost;
+    public Vector2 size;
     public float attackRange;
-    public float towerArea;
     public int bulletSpeed;
 
     [Header("Bullet Prefab")]

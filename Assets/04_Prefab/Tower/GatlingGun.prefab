@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 205e146a9ec9fff40b8c410682b7fe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 0
   IsFire: 0
   _enemyLayer:
     serializedVersion: 2
@@ -179,7 +180,7 @@ MonoBehaviour:
   _UnitLineLayer:
     serializedVersion: 2
     m_Bits: 1536
-  _weaponSO: {fileID: 11400000, guid: 585f0a564cb3e75478642a6101051ea3, type: 2}
+  <_weaponSO>k__BackingField: {fileID: 11400000, guid: 585f0a564cb3e75478642a6101051ea3, type: 2}
   enemyTargetList: []
   radius: 0.5
   isUnitCheck: 0

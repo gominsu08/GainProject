@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: Crossbow
   coolTime: 0.3
-  cost: 3
+  cost: 5
+  size: {x: 0.7, y: 0.7}
   attackRange: 5
-  towerArea: 0.5
   bulletSpeed: 7
   bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}
   towerCollider: {fileID: 8219064609794577260, guid: 7e1862c856c004549a3a223d79abfaa8, type: 3}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f46a30fbb845f478fd94a858fc21a1, type: 3}
   m_Name: BoomSO
   m_EditorClassIdentifier: 
-  towerName: 
-  coolTime: 1
-  cost: 2
+  towerName: Boom
+  coolTime: 2
+  cost: 9
+  size: {x: 0.7, y: 0.7}
   attackRange: 5
-  towerArea: 2
   bulletSpeed: 2
   bulletPrefab: {fileID: 4129967105772207039, guid: a0264602aa0bcb9498e9f3ebfde606d2, type: 3}
   towerCollider: {fileID: 8219064609794577260, guid: bd05d5fb8aa00944b97eaba458058836, type: 3}
