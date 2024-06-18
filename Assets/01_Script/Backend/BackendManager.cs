@@ -4,9 +4,18 @@ using UnityEngine;
 using BackEnd;
 using System;
 using System.Threading.Tasks;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BackendManager : MonoBehaviour
 {
+    [SerializeField] private TMP_InputField _LoginID;
+    [SerializeField] private TMP_InputField _LoginPW;
+
+    [SerializeField] private TMP_InputField _JoinID;
+    [SerializeField] private TMP_InputField _JoinPW;
+
     void Start()
     {
         var bro = Backend.Initialize(true); // 뒤끝 초기화
@@ -21,19 +30,51 @@ public class BackendManager : MonoBehaviour
         {
             Debug.LogError("초기화 실패 : " + bro); // 실패일 경우 statusCode 400대 에러 발생
         }
-        
-        Test();
     }
 
-    async void Test()
+    public async void Join()
     {
-        await Task.Run(() => {
+        if (_JoinID == null || _JoinPW == null)
+        {
+            return;
+        }
+
+        await Task.Run(() =>
+        {
             // 추후 테스트 케이스 추가
-            //BackendLogin.Instance.CustomSignUp("user1", "1234"); // [추가] 뒤끝 회원가입 함수
-            BackendLogin.Instance.CustomLogin("원하는 이름", "1234");// [추가] 뒤끝 로그인
+            BackendLogin.Instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
+
+            //BackendLogin.Instance.CustomLogin("원하는 이름", "1234");// [추가] 뒤끝 로그인
             //BackendLogin.Instance.UpdateNickname("원하는 이름"); // [추가] 닉네임 변겅
             Debug.Log("테스트를 종료합니다.");
         });
     }
-    
+
+
+    public async void Login()
+    {
+        if (_LoginID == null || _LoginPW == null)
+        {
+            return;
+        }
+
+        await Task.Run(() =>
+        {
+            // 추후 테스트 케이스 추가
+            //BackendLogin.Instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
+            print(BackendLogin.Instance.isLogin);
+            Debug.Log(0);
+            BackendLogin.Instance.CustomLogin($"{_LoginID.text}", $"{_LoginPW.text}");// [추가] 뒤끝 로그인
+            Debug.Log(2);
+            //BackendLogin.Instance.UpdateNickname("원하는 이름"); // [추가] 닉네임 변겅
+            Debug.Log("테스트를 종료합니다.");
+        });
+    }
+
+    private void Update()
+    {
+        print(BackendLogin.Instance.isLogin);
+
+    }
+
 }

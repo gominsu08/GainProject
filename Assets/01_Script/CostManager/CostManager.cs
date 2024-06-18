@@ -37,6 +37,6 @@ public class CostManager : MonoSingleton<CostManager>
 
     private void Update()
     {
-        _currentCostText.text = $"Current Cost : {CurrentCost}";
+        _currentCostText.text = $"현재 코스트 : {CurrentCost}";
     }
 }

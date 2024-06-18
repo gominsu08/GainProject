@@ -24,7 +24,7 @@ public abstract class Bullet : MonoBehaviour
 
     public virtual void Fire(Vector2 vec, float bulletSpeed)
     {
-        this.m_BulletSpeed = bulletSpeed;
+        m_BulletSpeed = bulletSpeed;
         Vector2 dis = vec - (Vector2)transform.position;
         float dir = Mathf.Atan2 (dis.y, dis.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(dir, Vector3.forward);

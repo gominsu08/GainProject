@@ -89,7 +89,7 @@ public abstract class Tower : MonoBehaviour
 
     private void UnitCollisionCheck()
     {
-        
+
         if (Physics2D.OverlapBox(transform.position, m_Size, 0, _UnitLineLayer))
         {
             isUnitCheck = true;
@@ -108,16 +108,24 @@ public abstract class Tower : MonoBehaviour
         {
             if (enemyTargetList.Count > 0)
             {
-                if (enemyTargetList[0].gameObject.IsDestroyed())
+                foreach (GameObject item in enemyTargetList)
                 {
-                    enemyTargetList.Remove(enemyTargetList[0].gameObject);
+                    if (item.IsDestroyed())
+                          enemyTargetList.Remove(item.gameObject);                                             
                 }
-                if(!m_IsFireCheck)
-                Fire(enemyTargetList[0].transform.position);
+
+                //if (enemyTargetList[0].gameObject.IsDestroyed())
+                //    enemyTargetList.RemoveAt(0);
+
+                if (!m_IsFireCheck)
+                {
+                    Fire(enemyTargetList[0].transform.position);
+                }
             }
             m_BulletCount++;
             yield return new WaitForSeconds(m_CoolTime);
         }
+        print(1);
     }
 
 #if UNITY_EDITOR

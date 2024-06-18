@@ -30,8 +30,8 @@ public class EnemyManager : MonoBehaviour
 
         
         yield return new WaitForSeconds(_enemySpwanTime);
-        GameManager.Instance.EnemyList.Clear();
         index++;
+        GameManager.Instance.EnemyList.Clear();
         if (_enemyPrefab.Length >= index+1)
         {
             StartCoroutine(EnemySpwan());
