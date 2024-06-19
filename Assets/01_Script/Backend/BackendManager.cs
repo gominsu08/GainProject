@@ -42,8 +42,7 @@ public class BackendManager : MonoBehaviour
         await Task.Run(() =>
         {
             // 추후 테스트 케이스 추가
-            BackendLogin.Instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
-
+            BackendLogin.instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
             //BackendLogin.Instance.CustomLogin("원하는 이름", "1234");// [추가] 뒤끝 로그인
             //BackendLogin.Instance.UpdateNickname("원하는 이름"); // [추가] 닉네임 변겅
             Debug.Log("테스트를 종료합니다.");
@@ -62,10 +61,7 @@ public class BackendManager : MonoBehaviour
         {
             // 추후 테스트 케이스 추가
             //BackendLogin.Instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
-            print(BackendLogin.Instance.isLogin);
-            Debug.Log(0);
-            BackendLogin.Instance.CustomLogin($"{_LoginID.text}", $"{_LoginPW.text}");// [추가] 뒤끝 로그인
-            Debug.Log(2);
+            BackendLogin.instance.CustomLogin($"{_LoginID.text}", $"{_LoginPW.text}");// [추가] 뒤끝 로그인
             //BackendLogin.Instance.UpdateNickname("원하는 이름"); // [추가] 닉네임 변겅
             Debug.Log("테스트를 종료합니다.");
         });
@@ -73,8 +69,9 @@ public class BackendManager : MonoBehaviour
 
     private void Update()
     {
-        print(BackendLogin.Instance.isLogin);
-
+        if (BackendLogin.instance.isJoin)
+            SceneManager.LoadScene("MenuScene");
+        if (BackendLogin.instance.isLogin)
+            SceneManager.LoadScene("MenuScene");
     }
-
 }

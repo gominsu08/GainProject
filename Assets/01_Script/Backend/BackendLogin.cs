@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using BackEnd;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class BackendLogin : MonoBehaviour
 {
-    public static BackendLogin _instance;
+    public static BackendLogin instance;
 
-    public static BackendLogin Instance
+
+    private void Awake()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new BackendLogin();
-                Debug.Log("new single nyamni");
-            }
-
-            return _instance;
-        }
+        if (instance == null)
+            instance = this;
     }
 
+    //public static BackendLogin Instance
+    //{
+    //    get
+    //    {
+    //        if (_instance == null)
+    //        {
+    //           _instance = new BackendLogin();
+    //           Debug.Log("new single nyamni");
+    //        }
+
+    //        return _instance;
+    //    }
+    //}
+
     public bool isLogin = false;
-    public bool isJoin;
+    public bool isJoin = false;
 
     public void CustomSignUp(string id, string pw)
     {
@@ -32,11 +40,9 @@ public class BackendLogin : MonoBehaviour
 
         var bro = Backend.BMember.CustomSignUp(id, pw);
 
-
         if (bro.IsSuccess())
         {
             Debug.Log("회원가입에 성공했습니다. : " + bro);
-            SceneManager.LoadScene("MenuScene");
             isJoin = true;
             print(isJoin);
         }
@@ -46,7 +52,7 @@ public class BackendLogin : MonoBehaviour
         }
     }
 
-    
+
     public void CustomLogin(string id, string pw)
     {
         // Step 3. 로그인 구현하기 로직
@@ -54,11 +60,10 @@ public class BackendLogin : MonoBehaviour
 
         var bro = Backend.BMember.CustomLogin(id, pw);
 
-        Debug.Log(1);
         if (bro.IsSuccess())
         {
             Debug.Log("로그인이 성공했습니다. : " + bro);
-            
+
             isLogin = true;
             print(isLogin);
         }
