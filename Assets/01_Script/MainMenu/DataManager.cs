@@ -23,4 +23,9 @@ public class DataManager : MonoSingleton<DataManager>
     public List<bool> StageClear = new List<bool>();
 
     public List<bool> StageUse = new List<bool>();
+
+    private string _loginIDSave;
+    private string _joinIDSave;
+    private string _joinPWSave;
+    private string _loginPWSave;
 }

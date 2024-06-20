@@ -60,9 +60,48 @@ public class BackendGameData
 
     public void GameDataInsert()
     {
-        // Step 2. 게임 정보 삽입 구현하기 
-    }
+        if (userData == null)
+        {
+            userData = new UserData();
+        }
 
+        Debug.Log("데이터를 초기화합니다.");
+        userData.level = 1;
+        userData.atk = 3.5f;
+        userData.info = "친추는 언제나 환영입니다.";
+
+        userData.equipment.Add("전사의 투구");
+        userData.equipment.Add("강철 갑옷");
+        userData.equipment.Add("헤르메스의 군화");
+
+        userData.inventory.Add("빨간포션", 1);
+        userData.inventory.Add("하얀포션", 1);
+        userData.inventory.Add("파란포션", 1);
+
+        Debug.Log("뒤끝 업데이트 목록에 해당 데이터들을 추가합니다.");
+        Param param = new Param();
+        param.Add("level", userData.level);
+        param.Add("atk", userData.atk);
+        param.Add("info", userData.info);
+        param.Add("equipment", userData.equipment);
+        param.Add("inventory", userData.inventory);
+
+
+        Debug.Log("게임 정보 데이터 삽입을 요청합니다.");
+        var bro = Backend.GameData.Insert("USER_DATA", param);
+
+        if (bro.IsSuccess())
+        {
+            Debug.Log("게임 정보 데이터 삽입에 성공했습니다. : " + bro);
+
+            //삽입한 게임 정보의 고유값입니다.  
+            gameDataRowInDate = bro.GetInDate();
+        }
+        else
+        {
+            Debug.LogError("게임 정보 데이터 삽입에 실패했습니다. : " + bro);
+        }
+    }
     public void GameDataGet()
     {
         // Step 3. 게임 정보 불러오기 구현하기
