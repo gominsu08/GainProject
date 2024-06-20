@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyDir
+public enum EnemyDirEnum
 {
     up,
     down,
@@ -14,36 +15,52 @@ public class EnemyMove : MonoBehaviour
     protected Vector3 m_dir = Vector3.right;
     private bool _isDirChange = false;
 
-    private EnemyDir _enemyDirEnum;
+    private EnemyDirEnum _enemyDirEnum;
 
 
     private Enemy _enemy;
+    private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
     {
-        _enemyDirEnum = EnemyDir.right;
+        _enemyDirEnum = EnemyDirEnum.right;
         m_dir = Vector3.right;
     }
     private void Update()
     {
-        transform.position += m_dir * _enemy.speed * Time.deltaTime;
+        if (_enemy.isMove)
+            transform.position += m_dir * _enemy.speed * Time.deltaTime;
+        Flip();
         ColliderCheck();
+    }
+
+    private void Flip()
+    {
+        if (_enemyDirEnum == EnemyDirEnum.right)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (_enemyDirEnum == EnemyDirEnum.left)
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 
     private void ColliderCheck()
     {
-        if (_enemyDirEnum == EnemyDir.up)
+        if (_enemyDirEnum == EnemyDirEnum.up)
             UpCheck();
-        if (_enemyDirEnum == EnemyDir.down)
+        if (_enemyDirEnum == EnemyDirEnum.down)
             DownCheck();
-        if (_enemyDirEnum == EnemyDir.left)
+        if (_enemyDirEnum == EnemyDirEnum.left)
             LeftCheck();
-        if (_enemyDirEnum == EnemyDir.right)
+        if (_enemyDirEnum == EnemyDirEnum.right)
             RightCheck();
     }
 
@@ -54,12 +71,12 @@ public class EnemyMove : MonoBehaviour
             if (!ColliderCheckLeft())
             {
                 m_dir = Vector3.left;
-                _enemyDirEnum = EnemyDir.left;
+                _enemyDirEnum = EnemyDirEnum.left;
             }
-            else if(!ColliderCheckRight())
+            else if (!ColliderCheckRight())
             {
                 m_dir = Vector3.right;
-                _enemyDirEnum = EnemyDir.right;
+                _enemyDirEnum = EnemyDirEnum.right;
             }
 
         }
@@ -72,12 +89,12 @@ public class EnemyMove : MonoBehaviour
             if (!ColliderCheckDown())
             {
                 m_dir = Vector3.down;
-                _enemyDirEnum = EnemyDir.down;
+                _enemyDirEnum = EnemyDirEnum.down;
             }
-            else if(!ColliderCheckUp())
+            else if (!ColliderCheckUp())
             {
                 m_dir = Vector3.up;
-                _enemyDirEnum = EnemyDir.up;
+                _enemyDirEnum = EnemyDirEnum.up;
             }
 
         }
@@ -91,12 +108,12 @@ public class EnemyMove : MonoBehaviour
             if (!ColliderCheckUp())
             {
                 m_dir = Vector3.up;
-                _enemyDirEnum = EnemyDir.up;
+                _enemyDirEnum = EnemyDirEnum.up;
             }
-            else if(!ColliderCheckDown())
+            else if (!ColliderCheckDown())
             {
                 m_dir = Vector3.down;
-                _enemyDirEnum = EnemyDir.down;
+                _enemyDirEnum = EnemyDirEnum.down;
 
             }
 
@@ -112,12 +129,12 @@ public class EnemyMove : MonoBehaviour
             if (!ColliderCheckLeft())
             {
                 m_dir = Vector3.left;
-                _enemyDirEnum = EnemyDir.left;
+                _enemyDirEnum = EnemyDirEnum.left;
             }
             else if (!ColliderCheckRight())
             {
                 m_dir = Vector3.right;
-                _enemyDirEnum = EnemyDir.right;
+                _enemyDirEnum = EnemyDirEnum.right;
             }
         }
 

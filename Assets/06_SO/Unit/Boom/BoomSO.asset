@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: Boom
   coolTime: 2
   cost: 9
-  size: {x: 0.9, y: 0.9}
+  size: {x: 0.8, y: 0.8}
   attackRange: 5
   bulletSpeed: 2
   bulletPrefab: {fileID: 4129967105772207039, guid: a0264602aa0bcb9498e9f3ebfde606d2, type: 3}

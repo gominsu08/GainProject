@@ -7,4 +7,6 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public List<Enemy> EnemyList = new List<Enemy>();
 
+    public Action OnStageClearEvent;
+
 }

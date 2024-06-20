@@ -8,7 +8,7 @@ public class UnitBuyManager : MonoBehaviour
 {
     [SerializeField] private GameObject _panelTrmF;//처음 아래꺼
     [SerializeField] private GameObject _panelTrmS;//처음 위에꺼
-    
+
 
     /// <summary>
     /// 처음 아래꺼 버튼
@@ -18,7 +18,6 @@ public class UnitBuyManager : MonoBehaviour
     /// 처음 위에꺼 버튼
     /// </summary>
     private Button[] _buyButton2;
-
     /// <summary>
     /// 처음 아래꺼
     /// </summary>

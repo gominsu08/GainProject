@@ -9,7 +9,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject[] _enemyPrefab;
     [SerializeField] private GameObject _enemyManager;
     [SerializeField] private int[] _enemyCount;
-    [SerializeField] private int _enemySpwanTime = 20;
+    public int enemySpwanTime = 5;
+
+    public List<EnemyData> enemyDataList = new List<EnemyData>();
 
     private int index = 0;
 
@@ -29,7 +31,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         
-        yield return new WaitForSeconds(_enemySpwanTime);
+        yield return new WaitForSeconds(enemySpwanTime);
         index++;
         GameManager.Instance.EnemyList.Clear();
         if (_enemyPrefab.Length >= index+1)

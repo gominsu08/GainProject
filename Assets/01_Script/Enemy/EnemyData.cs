@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "SO/EnemySO")]
 public class EnemyData : ScriptableObject
@@ -23,4 +24,7 @@ public class EnemyData : ScriptableObject
     /// Enemy를 잡았을때 얻을 수 있는 골드(재화)
     /// </summary>
     public int cost;
+
+
+    public Sprite enemyImage;
 }

@@ -27,7 +27,7 @@ public abstract class Bullet : MonoBehaviour
         m_BulletSpeed = bulletSpeed;
         Vector2 dis = vec - (Vector2)transform.position;
         float dir = Mathf.Atan2 (dis.y, dis.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(dir, Vector3.forward);
+        transform.rotation = Quaternion.Euler(0,0, dir);
         
     }
 

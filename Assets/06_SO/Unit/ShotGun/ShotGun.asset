@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: ShotGun
   coolTime: 1.2
   cost: 12
-  size: {x: 0.9, y: 0.9}
+  size: {x: 0.8, y: 0.8}
   attackRange: 0.5
   bulletSpeed: 13
   bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoSingleton<PlayerHP>
 {
@@ -38,7 +39,7 @@ public class PlayerHP : MonoSingleton<PlayerHP>
             }
             else
             {
-                print("밍 너 뒤짐 허접~~");
+                SceneManager.LoadScene("GameOverScene");
             }
         }
     }

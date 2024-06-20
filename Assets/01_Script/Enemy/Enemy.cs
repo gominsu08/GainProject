@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -13,21 +14,53 @@ public class Enemy : MonoBehaviour
     protected int m_EnemyHP = 10;
     protected int m_Damage = 1;
     public float speed = 3;
-    protected float m_gold;
-    protected int m_cost;
+    protected float m_Gold;
+    protected int m_Cost;
 
 
-    private void Awake()
+    public bool isGoldCount = true;
+
+    public bool isMove = true;
+    public virtual void Awake()
     {
         m_Damage = _enemyData.damage;
         m_EnemyHP = _enemyData.hp;
         speed = _enemyData.moveSpeed;
-        m_gold = _enemyData.gold;
-        m_cost = _enemyData.cost;
+        m_Gold = _enemyData.gold;
+        m_Cost = _enemyData.cost;
     }
 
-    
+    private void Update()
+    {
+        GoldCount();
+    }
 
+    private void GoldCount()
+    {
+        if (isGoldCount)
+        {
+            Gold -= 0.001f;
+        }
+    }
+
+    public float Gold
+    {
+        get => m_Gold;
+
+
+        set
+        {
+            if (value <= 0)
+            {
+                isGoldCount = false;
+                m_Gold = 0;
+            }
+            else
+            {
+                m_Gold = value;
+            }
+        }
+    }
 
     public int HP
     {
@@ -37,7 +70,8 @@ public class Enemy : MonoBehaviour
             m_EnemyHP = value;
             if (m_EnemyHP <= 0)
             {
-                CostManager.Instance.CurrentCost += m_cost;
+                CostManager.Instance.CurrentCost += m_Cost;
+                DataManager.Instance.currentGold += m_Gold;
                 Destroy(gameObject);
             }
         }
