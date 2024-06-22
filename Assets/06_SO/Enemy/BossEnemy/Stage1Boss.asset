@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d46806680404bc4e9a156d50dd05bce, type: 3}
-  m_Name: BossEnemy
+  m_Name: Stage1Boss
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 900
   damage: 15
   moveSpeed: 1
-  gold: 400
-  cost: 50
-  enemyImage: {fileID: 0}
+  gold: 600
+  cost: 60

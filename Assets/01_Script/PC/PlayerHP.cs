@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHP : MonoSingleton<PlayerHP>
 {
-    public Stack<GameObject> PlayerHeart = new Stack<GameObject>(); 
+    public Stack<GameObject> PlayerHeart = new Stack<GameObject>();
 
     [SerializeField] private GameObject _heartPrefab;
     [SerializeField] private GameObject _heartPanel;
@@ -20,9 +20,9 @@ public class PlayerHP : MonoSingleton<PlayerHP>
 
     private void Start()
     {
-        for (int i = 0; i < _playerHp; i++) 
+        for (int i = 0; i < _playerHp; i++)
         {
-            PlayerHeart.Push(Instantiate(_heartPrefab,_heartPanel.transform));
+            PlayerHeart.Push(Instantiate(_heartPrefab, _heartPanel.transform));
         }
     }
 
@@ -35,7 +35,7 @@ public class PlayerHP : MonoSingleton<PlayerHP>
 
             if (!playerDead)
             {
-            Destroy(playerHeart);
+                Destroy(playerHeart);
             }
             else
             {
@@ -53,6 +53,8 @@ public class PlayerHP : MonoSingleton<PlayerHP>
         else
         {
             playerDead = true;
+            DataManager.Instance.CurrentGold -= 1000;
+            SceneManager.LoadScene("GameOverScene");
             return null;
         }
     }

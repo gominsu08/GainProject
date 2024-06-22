@@ -9,9 +9,9 @@ public class ShotGun : Tower
         for (int i = 0; i < 8; i++)
         {
             GameObject bullet = Instantiate(m_BulletPrefab,transform.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().Fire(vector.normalized,m_BulletSpeed);
+            bullet.GetComponent<Bullet>().Fire(vector.normalized,m_BulletSpeed,m_Damage);
             Vector2 newDirection = Quaternion.Euler(new Vector3(0, 0, Random.Range(-10f, 10f))) * vector;
-            bullet.GetComponent<Bullet>().Fire(newDirection, m_BulletSpeed);
+            bullet.GetComponent<Bullet>().Fire(newDirection, m_BulletSpeed, m_Damage);
         }
     }
 

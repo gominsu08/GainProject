@@ -22,8 +22,9 @@ public abstract class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void Fire(Vector2 vec, float bulletSpeed)
+    public virtual void Fire(Vector2 vec, float bulletSpeed, int damage)
     {
+        this.damage = damage;
         m_BulletSpeed = bulletSpeed;
         Vector2 dis = vec - (Vector2)transform.position;
         float dir = Mathf.Atan2 (dis.y, dis.x) * Mathf.Rad2Deg;
@@ -40,6 +41,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            collision.gameObject.GetComponent<Enemy>().HP -= damage;
             Destroy(gameObject);
         }
     }

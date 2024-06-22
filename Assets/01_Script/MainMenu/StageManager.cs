@@ -25,6 +25,7 @@ public class StageManager : MonoSingleton<StageManager>
     private void Update()
     {
         _hunterScore.text = $"헌터 점수 : {DataManager.Instance.currentGold}";
+        GateSet();
     }
 
     private void Awake()
@@ -33,7 +34,7 @@ public class StageManager : MonoSingleton<StageManager>
         DataManager.Instance.currentStageInfo = 0;
         DataManager.Instance.quest = "";
         _useQuestText.text = $"{DataManager.Instance.quest}";
-        GateSet();
+        
     }
 
     private void GateSet()
@@ -44,6 +45,11 @@ public class StageManager : MonoSingleton<StageManager>
             {
                 _gateButton[i].interactable = false;
                 _gateButton[i].image.color = Color.red;
+            }
+            if (DataManager.Instance.StageUse[i])
+            {
+                _gateButton[i].interactable = true;
+                _gateButton[i].image.color = Color.white;
             }
         }
 
@@ -71,6 +77,66 @@ public class StageManager : MonoSingleton<StageManager>
         DataManager.Instance.quest = "도쿄";
         DataManager.Instance.waveCount = 7;
         DataManager.Instance.enemyCount = 75;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage3Click()
+    {
+        DataManager.Instance.currentStageInfo = 3;
+        DataManager.Instance.quest = "베를린";
+        DataManager.Instance.waveCount = 12;
+        DataManager.Instance.enemyCount = 184;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage4Click()
+    {
+        DataManager.Instance.currentStageInfo = 4;
+        DataManager.Instance.quest = "베이징";
+        DataManager.Instance.waveCount = 16;
+        DataManager.Instance.enemyCount = 240;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage5Click()
+    {
+        DataManager.Instance.currentStageInfo = 5;
+        DataManager.Instance.quest = "워싱턴 D.C.";
+        DataManager.Instance.waveCount = 21;
+        DataManager.Instance.enemyCount = 281;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage6Click()
+    {
+        DataManager.Instance.currentStageInfo = 6;
+        DataManager.Instance.quest = "로마";
+        DataManager.Instance.waveCount = 25;
+        DataManager.Instance.enemyCount = 302;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage7Click()
+    {
+        DataManager.Instance.currentStageInfo = 7;
+        DataManager.Instance.quest = "오타와";
+        DataManager.Instance.waveCount = 29;
+        DataManager.Instance.enemyCount = 325;
+        SetQuestPanel();
+        StageInfoSet();
+    }
+
+    public void Stage8Click()
+    {
+        DataManager.Instance.currentStageInfo = 8;
+        DataManager.Instance.quest = "파리";
+        DataManager.Instance.waveCount = 42;
+        DataManager.Instance.enemyCount = 649;
         SetQuestPanel();
         StageInfoSet();
     }
@@ -134,6 +200,9 @@ public class StageManager : MonoSingleton<StageManager>
                 break;
             case 7:
                 SceneManager.LoadScene("Stage7");
+                break;
+            case 8:
+                SceneManager.LoadScene("Stage8");
                 break;
             default:
                 print("스테이지를 선택해 주세요");

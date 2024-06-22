@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Crossbow
   m_EditorClassIdentifier: 
   towerName: Crossbow
+  damage: 4
   coolTime: 0.3
   cost: 5
   size: {x: 0.8, y: 0.8}

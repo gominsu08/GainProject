@@ -39,7 +39,8 @@ public class UnitBuy : MonoBehaviour
             if (!_unit.GetComponent<Tower>().isUnitCheck)
             {
                 _unit.layer = 10;
-                StopAllCoroutines();
+                _unit.GetComponentInChildren<Tower>().isFire = true;
+                        StopAllCoroutines();
                 print("¼³Ä¡µÊ");
                 SetManager();
             }

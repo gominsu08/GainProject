@@ -4,12 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 
-public class StageClear : MonoBehaviour
+public class StageClear : MonoSingleton<StageClear>
 {
     [SerializeField] private GameObject clearPanel;
     private RectTransform _rectTrm;
+
+    [SerializeField] private TMP_Text ItemText;
+    [SerializeField] private TMP_Text hunterScoreText;
+    [SerializeField] private TMP_Text TimeText;
+
+    private float clearTime;
+
+    private void Update()
+    {
+        clearTime += Time.deltaTime;
+    }
+
+    private int enemyDead;
 
     private void Awake()
     {
@@ -24,6 +38,9 @@ public class StageClear : MonoBehaviour
 
     public void Clear()
     {
+        ItemText.text = "얻은 정수 : 3개";
+        hunterScoreText.text = $"헌터 점수 : {DataManager.Instance.currentGold}";
+        TimeText.text = $"클리어 시간 : {(int)clearTime}초";
         StartCoroutine(CealrPanel());
         DataManager.Instance.StageClear[DataManager.Instance.currentStage - 1] = true;
         DataManager.Instance.StageUse[DataManager.Instance.currentStage] = true;

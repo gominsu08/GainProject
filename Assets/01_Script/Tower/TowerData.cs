@@ -9,6 +9,7 @@ public class TowerData : ScriptableObject
     public string towerName;
 
     [Header("Tower State")]
+    public int damage;
     public float coolTime;
     public int cost;
     public Vector2 size;

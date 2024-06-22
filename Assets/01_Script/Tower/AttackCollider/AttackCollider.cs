@@ -12,6 +12,7 @@ public class AttackCollider : MonoBehaviour
 
     private bool _isMouseDown;
 
+
     private void Awake()
     {
         tower = GetComponentInParent<Tower>();

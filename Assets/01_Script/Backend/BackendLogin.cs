@@ -16,20 +16,6 @@ public class BackendLogin : MonoBehaviour
             instance = this;
     }
 
-    //public static BackendLogin Instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //           _instance = new BackendLogin();
-    //           Debug.Log("new single nyamni");
-    //        }
-
-    //        return _instance;
-    //    }
-    //}
-
     public bool isLogin = false;
     public bool isJoin = false;
 

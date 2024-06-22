@@ -24,7 +24,4 @@ public class EnemyData : ScriptableObject
     /// Enemy를 잡았을때 얻을 수 있는 골드(재화)
     /// </summary>
     public int cost;
-
-
-    public Sprite enemyImage;
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShotGun
   m_EditorClassIdentifier: 
   towerName: ShotGun
+  damage: 3
   coolTime: 1.2
   cost: 12
   size: {x: 0.8, y: 0.8}

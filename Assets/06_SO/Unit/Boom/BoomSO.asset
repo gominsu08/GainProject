@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BoomSO
   m_EditorClassIdentifier: 
   towerName: Boom
+  damage: 7
   coolTime: 2
   cost: 9
   size: {x: 0.8, y: 0.8}

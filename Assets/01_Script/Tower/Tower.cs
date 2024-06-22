@@ -9,6 +9,7 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     protected string m_TowerName;
+    protected int m_Damage;
     protected float m_CoolTime;
     public int cost;
     protected float m_AttackRange;
@@ -34,6 +35,9 @@ public abstract class Tower : MonoBehaviour
     public Action OnMouseDown1Event;
     public Action OnMouseDown2Event;
 
+    public bool isFire = false;
+
+
     [field: SerializeField] public TowerData _weaponSO { get; private set; }
 
     public List<GameObject> enemyTargetList = new List<GameObject>();
@@ -52,6 +56,7 @@ public abstract class Tower : MonoBehaviour
         m_BulletPrefab = _weaponSO.bulletPrefab;
         m_TowerCollider = _weaponSO.towerCollider;
         m_Size = _weaponSO.size;
+        m_Damage = _weaponSO.damage;
     }
 
     public virtual void Start()
@@ -84,7 +89,7 @@ public abstract class Tower : MonoBehaviour
     {
         GameObject bullet = Instantiate(m_BulletPrefab);
         bullet.transform.position = transform.position;
-        bullet.GetComponent<Bullet>().Fire(vector, m_BulletSpeed);
+        bullet.GetComponent<Bullet>().Fire(vector, m_BulletSpeed,m_Damage);
     }
 
     private void UnitCollisionCheck()
@@ -117,7 +122,7 @@ public abstract class Tower : MonoBehaviour
                 //if (enemyTargetList[0].gameObject.IsDestroyed())
                 //    enemyTargetList.RemoveAt(0);
 
-                if (!m_IsFireCheck)
+                if (!m_IsFireCheck && isFire)
                 {
                     Fire(enemyTargetList[0].transform.position);
                 }
