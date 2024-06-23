@@ -12,6 +12,8 @@ public class StageClear : MonoSingleton<StageClear>
     [SerializeField] private GameObject clearPanel;
     private RectTransform _rectTrm;
 
+    [SerializeField] private int clearItemCount;
+
     [SerializeField] private TMP_Text ItemText;
     [SerializeField] private TMP_Text hunterScoreText;
     [SerializeField] private TMP_Text TimeText;
@@ -38,7 +40,9 @@ public class StageClear : MonoSingleton<StageClear>
 
     public void Clear()
     {
-        ItemText.text = "얻은 정수 : 3개";
+        DataManager.Instance.haveManaStone = clearItemCount;
+        DataManager.Instance.manaStone += DataManager.Instance.haveManaStone;
+        ItemText.text = $"얻은 정수 : {DataManager.Instance.haveManaStone}개";
         hunterScoreText.text = $"헌터 점수 : {DataManager.Instance.currentGold}";
         TimeText.text = $"클리어 시간 : {(int)clearTime}초";
         StartCoroutine(CealrPanel());

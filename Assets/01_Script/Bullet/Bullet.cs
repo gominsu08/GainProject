@@ -6,8 +6,10 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    protected float m_BulletSpeed;
+    public ParticleSystem ParticleSystem;
+    public GameObject Light;
 
+    protected float m_BulletSpeed;
 
     public int damage;
 
@@ -42,6 +44,8 @@ public abstract class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().HP -= damage;
+            Instantiate(ParticleSystem,transform.position,Quaternion.identity);
+            Instantiate(Light, transform.position,Quaternion.identity);
             Destroy(gameObject);
         }
     }

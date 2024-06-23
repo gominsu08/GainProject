@@ -15,12 +15,12 @@ public class ShopManager : MonoSingleton<ShopManager>
     private void Awake()
     {
         _itemPanel.SetActive(false);
-        moneyCount.text = $": {DataManager.Instance.itemCount}";
+        moneyCount.text = $": {DataManager.Instance.manaStone}";
     }
 
     public void TextUpdate()
     {
-        moneyCount.text = $": {DataManager.Instance.itemCount}";
+        moneyCount.text = $": {DataManager.Instance.manaStone}";
     }
 
     public void PanelChange()

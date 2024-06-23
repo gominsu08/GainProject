@@ -41,9 +41,9 @@ public class MainBackendManager : MonoBehaviour
             BackendGameData.Instance.GameDataGet();
 
 
+            
             BackendRank.instance.RankInsert(DataManager.Instance.currentGold);
 
-            //BackendRank.Instance.RankGet(); // [추가] 랭킹 불러오기 함수
             ////BackendGameData.Instance.GameDataGet();
 
 

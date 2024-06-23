@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43081754, g: 0.7679732, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -180,10 +180,13 @@ MonoBehaviour:
   _UnitLineLayer:
     serializedVersion: 2
     m_Bits: 5120
+  isFire: 0
   <_weaponSO>k__BackingField: {fileID: 11400000, guid: c45fabe7100bea947975016fbdde8134, type: 2}
   enemyTargetList: []
   radius: 0.5
   isUnitCheck: 0
+  minAngle: 0
+  maxAngle: 0
 --- !u!1001 &107738830471828143
 PrefabInstance:
   m_ObjectHideFlags: 0

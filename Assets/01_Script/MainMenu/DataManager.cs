@@ -64,6 +64,9 @@ public class DataManager : MonoSingleton<DataManager>
 
     public int itemCount;
 
+    public int manaStone;
+    public int haveManaStone;
+
     public List<string> buyUnitList = new List<string>();
 
     public List<bool> StageClear = new List<bool>();

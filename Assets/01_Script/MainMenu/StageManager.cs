@@ -105,8 +105,8 @@ public class StageManager : MonoSingleton<StageManager>
     {
         DataManager.Instance.currentStageInfo = 5;
         DataManager.Instance.quest = "워싱턴 D.C.";
-        DataManager.Instance.waveCount = 21;
-        DataManager.Instance.enemyCount = 281;
+        DataManager.Instance.waveCount = 18;
+        DataManager.Instance.enemyCount = 258;
         SetQuestPanel();
         StageInfoSet();
     }
@@ -115,8 +115,8 @@ public class StageManager : MonoSingleton<StageManager>
     {
         DataManager.Instance.currentStageInfo = 6;
         DataManager.Instance.quest = "로마";
-        DataManager.Instance.waveCount = 25;
-        DataManager.Instance.enemyCount = 302;
+        DataManager.Instance.waveCount = 21;
+        DataManager.Instance.enemyCount = 291;
         SetQuestPanel();
         StageInfoSet();
     }
@@ -125,7 +125,7 @@ public class StageManager : MonoSingleton<StageManager>
     {
         DataManager.Instance.currentStageInfo = 7;
         DataManager.Instance.quest = "오타와";
-        DataManager.Instance.waveCount = 29;
+        DataManager.Instance.waveCount = 25;
         DataManager.Instance.enemyCount = 325;
         SetQuestPanel();
         StageInfoSet();
@@ -135,8 +135,8 @@ public class StageManager : MonoSingleton<StageManager>
     {
         DataManager.Instance.currentStageInfo = 8;
         DataManager.Instance.quest = "파리";
-        DataManager.Instance.waveCount = 42;
-        DataManager.Instance.enemyCount = 649;
+        DataManager.Instance.waveCount = 30;
+        DataManager.Instance.enemyCount = 400;
         SetQuestPanel();
         StageInfoSet();
     }

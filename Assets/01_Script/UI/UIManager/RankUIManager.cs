@@ -38,6 +38,8 @@ public class RankUIManager : MonoBehaviour
 
     public void RankSet()
     {
+        BackendRank.instance.RankGet(); // [추가] 랭킹 불러오기 함수
+
         nickname = new List<string>();
 
         var collback = Backend.URank.User.GetRankList("b959c130-30ac-11ef-8960-0b7bd9c413a8", 13);
@@ -78,6 +80,7 @@ public class RankUIManager : MonoBehaviour
 
     public void Rank(int i, string name)
     {
+        
         switch (i + 1)
         {
             case 1:

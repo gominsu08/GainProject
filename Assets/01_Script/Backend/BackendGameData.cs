@@ -10,6 +10,7 @@ public class UserData
     public float cost = 0;
     public int useStage = 0;
     public int clearStage = 0;
+    public int manaStone = 0;
     public string info = string.Empty;
 
     // 데이터를 디버깅하기 위한 함수입니다.(Debug.Log(UserData);)
@@ -19,6 +20,7 @@ public class UserData
         result.AppendLine($"cost : {cost}");
         result.AppendLine($"UseStage : {useStage}");
         result.AppendLine($"ClearStage : {clearStage}");
+        result.AppendLine($"ManaStone : {manaStone}");
 
         return result.ToString();
     }
@@ -56,12 +58,14 @@ public class BackendGameData
         userData.cost = 0;
         userData.useStage = 0;
         userData.clearStage = 0;
+        userData.manaStone = 0;
 
         Debug.Log("뒤끝 업데이트 목록에 해당 데이터들을 추가합니다.");
         Param param = new Param();
         param.Add("cost", userData.cost);
         param.Add("UseStage", userData.useStage);
         param.Add("ClearStage", userData.clearStage);
+        param.Add("ManaStone", userData.manaStone);
 
 
         Debug.Log("게임 정보 데이터 삽입을 요청합니다.");
@@ -104,12 +108,14 @@ public class BackendGameData
                 userData.cost = float.Parse(gameDataJson[0]["cost"].ToString());
                 userData.useStage = int.Parse(gameDataJson[0]["UseStage"].ToString());
                 userData.clearStage = int.Parse(gameDataJson[0]["ClearStage"].ToString());
+                userData.manaStone = int.Parse(gameDataJson[0]["ManaStone"].ToString());
 
                 Debug.Log(userData + "값");
 
                 DataManager.Instance.currentGold = userData.cost;
                 DataManager.Instance.clearStage = userData.clearStage;
                 DataManager.Instance.useStage = userData.useStage;
+                DataManager.Instance.manaStone = userData.manaStone;
 
             }
         }
@@ -125,6 +131,7 @@ public class BackendGameData
         userData.cost = DataManager.Instance.currentGold;
         userData.useStage = DataManager.Instance.useStage;
         userData.clearStage = DataManager.Instance.clearStage;
+        userData.manaStone = DataManager.Instance.manaStone;
     }
 
     // 게임 정보 수정하기
@@ -140,6 +147,7 @@ public class BackendGameData
         param.Add("cost", userData.cost);
         param.Add("UseStage", userData.useStage);
         param.Add("ClearStage", userData.clearStage);
+        param.Add("ManaStone", userData.manaStone);
 
         BackendReturnObject bro = null;
 

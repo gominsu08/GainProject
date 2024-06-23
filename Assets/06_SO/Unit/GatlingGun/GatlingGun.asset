@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f46a30fbb845f478fd94a858fc21a1, type: 3}
   m_Name: GatlingGun
   m_EditorClassIdentifier: 
-  towerName: GatlingGun
+  towerName: Gatling
   damage: 2
-  coolTime: 0.07
+  coolTime: 0.09
   cost: 20
   size: {x: 0.8, y: 0.8}
   attackRange: 5
-  bulletSpeed: 12
+  bulletSpeed: 10
   bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}
   towerCollider: {fileID: 1484980398570391565, guid: d64ca494a7bc13145bd84d6012010ac1, type: 3}

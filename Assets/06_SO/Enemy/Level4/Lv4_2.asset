@@ -16,4 +16,4 @@ MonoBehaviour:
   damage: 2
   moveSpeed: 6
   gold: 650
-  cost: 35
+  cost: 9

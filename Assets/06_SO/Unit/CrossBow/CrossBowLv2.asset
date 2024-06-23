@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f46a30fbb845f478fd94a858fc21a1, type: 3}
+  m_Name: CrossBowLv2
+  m_EditorClassIdentifier: 
+  towerName: CrossBowLv2
+  damage: 12
+  coolTime: 0.15
+  cost: 35
+  size: {x: 0.8, y: 0.8}
+  attackRange: 10
+  bulletSpeed: 17
+  bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}
+  towerCollider: {fileID: 3396925222500677022, guid: ad3adb30f3732cf43993f3ca061754bc, type: 3}
