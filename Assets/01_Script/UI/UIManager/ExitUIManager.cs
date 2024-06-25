@@ -31,6 +31,12 @@ public class ExitUIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void TitleExit()
+    {
+        DataManager.Instance.CurrentGold -= 1000;
+        SceneManager.LoadScene("TitleScene");
+    }
+
     public void GotoMainMenu()
     {
         SceneManager.LoadScene("MenuScene");

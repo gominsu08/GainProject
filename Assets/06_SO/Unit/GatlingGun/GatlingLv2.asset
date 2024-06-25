@@ -15,8 +15,8 @@ MonoBehaviour:
   towerName: 
   damage: 5
   coolTime: 0.04
-  cost: 130
-  size: {x: 0.8, y: 0.8}
+  cost: 150
+  size: {x: 0.7, y: 0}
   attackRange: 7.5
   bulletSpeed: 18
   bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}

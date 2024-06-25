@@ -9,10 +9,13 @@ public class UnitBuy : MonoBehaviour
     [SerializeField] private Tower _unitBuyPrefab;
 
 
+
     private GameObject _unit;
     private bool _isUnitSet1, _isUnitSet2;
+
     public void CreatUnit()
     {
+        if (DataManager.Instance.currentBuyTower != null) return;
         if (CostManager.Instance.CurrentCost - _unitBuyPrefab._weaponSO.cost >= 0)
         {
             CostManager.Instance.CurrentCost -= _unitBuyPrefab._weaponSO.cost;
@@ -22,6 +25,7 @@ public class UnitBuy : MonoBehaviour
             return;
         }
         _unit = Instantiate(_unitBuyPrefab.gameObject);
+        DataManager.Instance.currentBuyTower = _unit;
         StartCoroutine(UnitLocationSet());
     }
     private void Update()
@@ -52,9 +56,12 @@ public class UnitBuy : MonoBehaviour
 
     private void SetManager()
     {
+        _unit.layer = 10;
+        _unit.GetComponentInChildren<Tower>().isFire = true;
         _isUnitSet1 = false;
         _isUnitSet2 = false;
         _unit = null;
+        DataManager.Instance.currentBuyTower = null;
     }
 
     private IEnumerator UnitLocationSet()

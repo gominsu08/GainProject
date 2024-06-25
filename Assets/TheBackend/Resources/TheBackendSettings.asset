@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 660911240, guid: f624596d5fe1bd5459a5da424a8abc1b, type: 3}
   m_Name: TheBackendSettings
   m_EditorClassIdentifier: 
-  clientAppID: 90752ac0-2805-11ef-a314-b30145522b7f7784
-  signatureKey: 939619d0-2805-11ef-a314-b30145522b7f7784
+  clientAppID: 70edcca0-31bc-11ef-b34b-1ddba08c435f7849
+  signatureKey: 70edcca1-31bc-11ef-b34b-1ddba08c435f7849
   functionAuthKey: 
   packageName: com.gominsu.RainbowMountain
   isAllPlatform: 1

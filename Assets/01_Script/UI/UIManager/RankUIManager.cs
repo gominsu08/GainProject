@@ -42,7 +42,7 @@ public class RankUIManager : MonoBehaviour
 
         nickname = new List<string>();
 
-        var collback = Backend.URank.User.GetRankList("b959c130-30ac-11ef-8960-0b7bd9c413a8", 13);
+        var collback = Backend.URank.User.GetRankList("07789e20-31bd-11ef-bb11-23afd11345db", 13);
 
         if (collback.IsSuccess())
         {

@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: CrossBowLv2
   damage: 12
   coolTime: 0.15
-  cost: 35
+  cost: 65
   size: {x: 0.8, y: 0.8}
   attackRange: 10
   bulletSpeed: 17

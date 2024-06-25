@@ -23,31 +23,33 @@ public class MainBackendManager : MonoBehaviour
 
         Login();
     }
-    public async void Login()
+    public void Login()
     {
-        await Task.Run(() =>
+
+        BackendLogin.instance.CustomLogin($"{DataManager.Instance._loginIDSave}", $"{DataManager.Instance._loginPWSave}");// [추가] 뒤끝 로그인
+
+        BackendReturnObject brod = Backend.BMember.IsAccessTokenAlive();
+        if (brod.IsSuccess())
         {
-            BackendLogin.instance.CustomLogin($"{DataManager.Instance._loginIDSave}", $"{DataManager.Instance._loginPWSave}");// [추가] 뒤끝 로그인
+            Debug.Log("액세스 토큰이 살아있습니다");
+        }
+        // [추가] 서버에 불러온 데이터가 존재하지 않을 경우, 데이터를 새로 생성하여 삽입
+        if (BackendGameData.userData == null)
+        {
+            BackendGameData.Instance.GameDataInsert();
+        }
+
+        BackendGameData.Instance.LevelUp(); // [추가] 로컬에 저장된 데이터를 변경
+        BackendGameData.Instance.GameDataUpdate();
+        BackendGameData.Instance.GameDataGet();
 
 
-            // [추가] 서버에 불러온 데이터가 존재하지 않을 경우, 데이터를 새로 생성하여 삽입
-            if (BackendGameData.userData == null)
-            {
-                BackendGameData.Instance.GameDataInsert();
-            }
 
-            BackendGameData.Instance.LevelUp(); // [추가] 로컬에 저장된 데이터를 변경
-            BackendGameData.Instance.GameDataUpdate();
-            BackendGameData.Instance.GameDataGet();
+        BackendRank.instance.RankInsert(DataManager.Instance.currentGold);
+
+        ////BackendGameData.Instance.GameDataGet();
 
 
-            
-            BackendRank.instance.RankInsert(DataManager.Instance.currentGold);
-
-            ////BackendGameData.Instance.GameDataGet();
-
-
-            Debug.Log("테스트를 종료합니다.");
-        });
+        Debug.Log("테스트를 종료합니다.");
     }
 }

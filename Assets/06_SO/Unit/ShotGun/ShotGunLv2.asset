@@ -15,7 +15,7 @@ MonoBehaviour:
   towerName: 
   damage: 6
   coolTime: 2
-  cost: 60
+  cost: 160
   size: {x: 0.8, y: 0.8}
   attackRange: 10
   bulletSpeed: 12

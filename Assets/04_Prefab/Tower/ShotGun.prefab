@@ -185,8 +185,8 @@ MonoBehaviour:
   enemyTargetList: []
   radius: 0.5
   isUnitCheck: 0
-  minAngle: 0
-  maxAngle: 0
+  minAngle: -10
+  maxAngle: 10
 --- !u!1001 &107738830471828143
 PrefabInstance:
   m_ObjectHideFlags: 0

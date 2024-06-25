@@ -42,6 +42,7 @@ public class DataManager : MonoSingleton<DataManager>
 
     public float currentGold;
 
+    public GameObject currentBuyTower;
     public float CurrentGold
     {
         get {return currentGold;}

@@ -23,6 +23,8 @@ public class BackendManager : MonoBehaviour
         var bro = Backend.Initialize(true); // 뒤끝 초기화
         print(bro);
 
+       
+
         // 뒤끝 초기화에 대한 응답값
         if (bro.IsSuccess())
         {
@@ -34,35 +36,28 @@ public class BackendManager : MonoBehaviour
         }
     }
 
-    public async void Join()
+    public void Join()
     {
-        await Task.Run(() =>
-        {
             if(_nickName.text == "")
                 return;
 
             // 추후 테스트 케이스 추가
             BackendLogin.instance.CustomSignUp($"{_joinID.text}", $"{_joinPW.text}"); // [추가] 뒤끝 회원가입 함수
-            BackendGameData.Instance.GameDataInsert();
-            BackendRank.instance.RankInsert(0);
-            //BackendLogin.Instance.CustomLogin("원하는 이름", "1234");// [추가] 뒤끝 로그인
             BackendLogin.instance.UpdateNickname($"{_nickName.text}"); // [추가] 닉네임 변겅
+            BackendGameData.Instance.GameDataInsert();
+            //BackendLogin.Instance.CustomLogin("원하는 이름", "1234");// [추가] 뒤끝 로그인
             Debug.Log("테스트를 종료합니다.");
-        });
     }
 
 
-    public async void Login()
+    public void Login()
     {
-        await Task.Run(() =>
-        {
             // 추후 테스트 케이스 추가
             //BackendLogin.Instance.CustomSignUp($"{_JoinID.text}", $"{_JoinPW.text}"); // [추가] 뒤끝 회원가입 함수
             BackendLogin.instance.CustomLogin($"{_loginID.text}", $"{_loginPW.text}");// [추가] 뒤끝 로그인
             BackendGameData.Instance.GameDataGet();
             //BackendLogin.Instance.UpdateNickname("원하는 이름"); // [추가] 닉네임 변겅
             Debug.Log("테스트를 종료합니다.");
-        });
     }
 
     private void Update()
