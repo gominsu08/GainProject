@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,11 @@ using UnityEngine.SceneManagement;
 public class ExitUIManager : MonoBehaviour
 {
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private GameObject _penal;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && _rectTransform != null)
         {
             PanelSet();
         }
@@ -40,5 +42,10 @@ public class ExitUIManager : MonoBehaviour
     public void GotoMainMenu()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void Exit()
+    {
+        _penal.SetActive(false);
     }
 }

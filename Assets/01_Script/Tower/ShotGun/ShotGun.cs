@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ShotGun : Tower
 {
@@ -11,12 +12,14 @@ public class ShotGun : Tower
     {
         for (int i = 0; i < 8; i++)
         {
-            GameObject bullet = Instantiate(m_BulletPrefab,transform.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().Fire(vector.normalized,m_BulletSpeed,m_Damage);
+            GameObject bullet = Instantiate(m_BulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().Fire(vector.normalized, m_BulletSpeed, m_Damage);
             Vector2 newDirection = Quaternion.Euler(new Vector3(0, 0, Random.Range(minAngle, maxAngle))) * vector;
             bullet.GetComponent<Bullet>().Fire(newDirection, m_BulletSpeed, m_Damage);
         }
+        Instantiate(_fireLight, transform.position, Quaternion.identity);
     }
+
 
     private void OnDisable()
     {

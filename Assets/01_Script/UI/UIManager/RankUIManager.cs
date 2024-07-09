@@ -7,6 +7,7 @@ using System.Text;
 using UnityEngine.AI;
 using DG.Tweening;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class RankUIManager : MonoBehaviour
 {

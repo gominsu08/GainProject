@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d46806680404bc4e9a156d50dd05bce, type: 3}
   m_Name: Lv5_1
   m_EditorClassIdentifier: 
-  hp: 400
+  hp: 750
   damage: 5
-  moveSpeed: 2
+  moveSpeed: 4
   gold: 800
-  cost: 20
+  cost: 3

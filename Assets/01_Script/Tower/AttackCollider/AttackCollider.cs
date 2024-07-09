@@ -51,7 +51,10 @@ public class AttackCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            tower.enemyTargetList.Remove(collision.gameObject);
+            if (tower.enemyTargetList.Contains(collision.gameObject))
+            {
+                tower.enemyTargetList.Remove(collision.gameObject);
+            }
         }
     }
 }

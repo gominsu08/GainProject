@@ -30,13 +30,13 @@ public abstract class Bullet : MonoBehaviour
         m_BulletSpeed = bulletSpeed;
         Vector2 dis = vec - (Vector2)transform.position;
         float dir = Mathf.Atan2 (dis.y, dis.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0,0, dir);
+        transform.rotation = Quaternion.Euler(0,0, dir - 90);
         
     }
 
     public virtual void Update()
     {
-        transform.position += transform.right * m_BulletSpeed * Time.deltaTime;
+        transform.position += transform.up * m_BulletSpeed * Time.deltaTime;
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)

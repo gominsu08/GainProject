@@ -26,6 +26,14 @@ public class PlayerHP : MonoSingleton<PlayerHP>
         }
     }
 
+    private void Update()
+    {
+        if (_playerHp <= 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
+    }
+
     private void EnemyIn(int damage)
     {
         _playerHp -= damage;

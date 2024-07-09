@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lv2_1
   m_EditorClassIdentifier: 
   hp: 18
-  damage: 3
-  moveSpeed: 3
+  damage: 1
+  moveSpeed: 5
   gold: 150
-  cost: 2
+  cost: 1

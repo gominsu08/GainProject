@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ public abstract class Tower : MonoBehaviour
 
     protected int m_BulletCount;
     protected bool m_IsFireCheck;
+
+    public GameObject _fireLight;
 
 
     //protected DamageCaster m_Caster;
@@ -69,6 +72,8 @@ public abstract class Tower : MonoBehaviour
     {
         UnitCollisionCheck();
 
+        RotateTower();
+
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -85,11 +90,24 @@ public abstract class Tower : MonoBehaviour
             }
         }
     }
+
+    private void RotateTower()
+    {
+        if (enemyTargetList.Count > 0 && isFire)
+        {
+            Vector2 dis = enemyTargetList[0].transform.position - transform.position;
+            float dir = Mathf.Atan2(dis.y, dis.x) * Mathf.Rad2Deg;
+            transform.DORotate(new Vector3(0, 0, dir - 90), 0.2f);
+            //transform.rotation = Quaternion.Euler(0, 0, dir - 90);
+        }
+    }
+
     public virtual void Fire(Vector2 vector)
     {
         GameObject bullet = Instantiate(m_BulletPrefab);
+        Instantiate(_fireLight, transform.position, Quaternion.identity);
         bullet.transform.position = transform.position;
-        bullet.GetComponent<Bullet>().Fire(vector, m_BulletSpeed,m_Damage);
+        bullet.GetComponent<Bullet>().Fire(vector, m_BulletSpeed, m_Damage);
     }
 
     private void UnitCollisionCheck()
@@ -113,16 +131,22 @@ public abstract class Tower : MonoBehaviour
         {
             if (enemyTargetList.Count > 0)
             {
-                foreach (GameObject item in enemyTargetList)
+                try
                 {
-                    if (item.IsDestroyed())
-                          enemyTargetList.Remove(item.gameObject);                                             
+                    foreach (GameObject item in enemyTargetList)
+                    {
+                        if (item.IsDestroyed())
+                            enemyTargetList.Remove(item.gameObject);
+                    }
                 }
-
-                //if (enemyTargetList[0].gameObject.IsDestroyed())
-                //    enemyTargetList.RemoveAt(0);
-
-                if (!m_IsFireCheck && isFire)
+                catch
+                {
+                    enemyTargetList = new List<GameObject>();
+                    print(enemyTargetList);
+                    Debug.LogError("쉬발 이거 뭔 에러냐");
+                }
+                print("밍");
+                if (!m_IsFireCheck && isFire && enemyTargetList.Count > 0)
                 {
                     Fire(enemyTargetList[0].transform.position);
                 }

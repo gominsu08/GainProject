@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 20
   damage: 1
-  moveSpeed: 3
+  moveSpeed: 2
   gold: 70
   cost: 2

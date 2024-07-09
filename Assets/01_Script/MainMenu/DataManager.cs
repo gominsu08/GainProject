@@ -7,6 +7,7 @@ public class DataManager : MonoSingleton<DataManager>
 {
     private void Awake()
     {
+        Time.timeScale = 1;
         var obj = FindObjectsOfType<DataManager>();
         if (obj.Length == 1)
         {

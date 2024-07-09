@@ -68,6 +68,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (ColliderCheckDown())
         {
+            changePosdsition();
             if (!ColliderCheckLeft())
             {
                 m_dir = Vector3.left;
@@ -86,6 +87,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (ColliderCheckLeft())
         {
+            changePosdsition();
             if (!ColliderCheckDown())
             {
                 m_dir = Vector3.down;
@@ -105,6 +107,7 @@ public class EnemyMove : MonoBehaviour
 
         if (ColliderCheckRight())
         {
+            changePosdsition();
             if (!ColliderCheckUp())
             {
                 m_dir = Vector3.up;
@@ -126,6 +129,7 @@ public class EnemyMove : MonoBehaviour
 
         if (ColliderCheckUp())
         {
+            changePosdsition();
             if (!ColliderCheckLeft())
             {
                 m_dir = Vector3.left;
@@ -139,33 +143,36 @@ public class EnemyMove : MonoBehaviour
         }
 
     }
-
+    private void changePosdsition()
+    {
+        transform.position = TilemapManager.Instance.tilemap.GetCellCenterWorld(TilemapManager.Instance.tilemap.WorldToCell(transform.position));
+    }
     private bool ColliderCheckUp()
     {
-        return Physics2D.Raycast(transform.position, Vector2.up, 0.53f, LayerMask.GetMask("Line"));
+        return Physics2D.Raycast(transform.position, Vector2.up, 0.55f, LayerMask.GetMask("Line"));
     }
     private bool ColliderCheckLeft()
     {
-        return Physics2D.Raycast(transform.position, Vector2.left, 0.53f, LayerMask.GetMask("Line"));
+        return Physics2D.Raycast(transform.position, Vector2.left, 0.55f, LayerMask.GetMask("Line"));
     }
     private bool ColliderCheckRight()
     {
-        return Physics2D.Raycast(transform.position, Vector2.right, 0.53f, LayerMask.GetMask("Line"));
+        return Physics2D.Raycast(transform.position, Vector2.right, 0.55f, LayerMask.GetMask("Line"));
     }
     private bool ColliderCheckDown()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, 0.53f, LayerMask.GetMask("Line"));
+        return Physics2D.Raycast(transform.position, Vector2.down, 0.55f, LayerMask.GetMask("Line"));
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, Vector2.up * 0.53f);
+        Gizmos.DrawRay(transform.position, Vector2.up * 0.55f);
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector2.right * 0.53f);
+        Gizmos.DrawRay(transform.position, Vector2.right * 0.55f);
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, Vector2.left * 0.53f);
+        Gizmos.DrawRay(transform.position, Vector2.left * 0.55f);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(transform.position, Vector2.down * 0.53f);
+        Gizmos.DrawRay(transform.position, Vector2.down * 0.55f);
     }
 }

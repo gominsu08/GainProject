@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 2
   coolTime: 0.09
   cost: 20
-  size: {x: 0.7, y: 0}
+  size: {x: 0.7, y: 0.5}
   attackRange: 5
   bulletSpeed: 10
   bulletPrefab: {fileID: 1516605217840140330, guid: 77e526b86b8491543ac103cc3a035f22, type: 3}

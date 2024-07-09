@@ -25,8 +25,12 @@ public class MainBackendManager : MonoBehaviour
     }
     public void Login()
     {
-
-        BackendLogin.instance.CustomLogin($"{DataManager.Instance._loginIDSave}", $"{DataManager.Instance._loginPWSave}");// [추가] 뒤끝 로그인
+        BackendReturnObject bro = Backend.BMember.CustomLogin(DataManager.Instance._loginIDSave, DataManager.Instance._loginPWSave);
+        if (bro.IsSuccess())
+        {
+            Debug.Log("로그인에 성공했습니다");
+        }
+        //BackendLogin.instance.CustomLogin(DataManager.Instance._loginIDSave, DataManager.Instance._loginPWSave);// [추가] 뒤끝 로그인
 
         BackendReturnObject brod = Backend.BMember.IsAccessTokenAlive();
         if (brod.IsSuccess())

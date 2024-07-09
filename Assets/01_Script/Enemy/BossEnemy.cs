@@ -52,4 +52,13 @@ public class BossEnemy : Enemy
         GameManager.Instance.OnStageClearEvent?.Invoke();
         _enemyManager.enemySpwanTime = 0;
     }
+
+    public override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Home"))
+        {
+            OnEnemyAttack?.Invoke(m_Damage);
+            gameObject.SetActive(false);
+        }
+    }
 }
