@@ -35,7 +35,7 @@ public class ExitUIManager : MonoBehaviour
 
     public void TitleExit()
     {
-        DataManager.Instance.CurrentGold -= 1000;
+        DataManager.Instance.CurrentGold -= 5000;
         SceneManager.LoadScene("TitleScene");
     }
 

@@ -22,11 +22,6 @@ public class RankUIManager : MonoBehaviour
 
     private List<string> nickname;
 
-    private void Update()
-    {
-        _myRank.text = BackendRank.instance.myRank;
-    }
-
     public void PanelSet()
     {
         Panel.DOAnchorPosY(0, 1).SetEase(Ease.OutBounce);
