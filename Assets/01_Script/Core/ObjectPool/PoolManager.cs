@@ -20,7 +20,7 @@ public class PoolManager : MonoSingleton<PoolManager>
 
     private void CretePool(PoolItemSO so)
     {
-        IPoolable poolable = so.prefab.GetComponent<IPoolable>();
+        Ipoolable poolable = so.prefab.GetComponent<Ipoolable>();
         if (poolable == null)
         {
             Debug.LogWarning($"GameObject {so.prefab.name} has no Ipoolable Script");
@@ -31,11 +31,11 @@ public class PoolManager : MonoSingleton<PoolManager>
         _pools.Add(poolable.PoolName,pool);
     }
 
-    public IPoolable Pop(string itemName)
+    public Ipoolable Pop(string itemName)
     {
         if (_pools.ContainsKey(itemName))
         {
-            IPoolable item = _pools[itemName].Pop();
+            Ipoolable item = _pools[itemName].Pop();
             item.ResetItem();
             return item;
         }
@@ -43,7 +43,7 @@ public class PoolManager : MonoSingleton<PoolManager>
         return null;
     }
 
-    public void Push(IPoolable item)
+    public void Push(Ipoolable item)
     {
         if (_pools.ContainsKey(item.PoolName))
         {

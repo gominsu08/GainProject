@@ -13,7 +13,7 @@ public class PoolItemSO : ScriptableObject
     {
         if (prefab != null)
         {
-            IPoolable item = prefab.GetComponent<IPoolable>();
+            Ipoolable item = prefab.GetComponent<Ipoolable>();
             if(item == null)
             {
                 Debug.LogWarning($"Can't find IPoolable script on prefab : chech! {prefab.name}");
